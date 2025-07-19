@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
     Sheet,
@@ -11,6 +14,8 @@ import { Menu } from "lucide-react";
 import { NavLinks } from "./navLinks";
 
 export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header 
         className="fixed top-0 right-0 left-0 z-[999] py-4 px-6 bg-white shadow-md"
@@ -24,12 +29,12 @@ export function Header() {
         </Link>
 
       <nav 
-        className="hidden md:flex items-center"
+        className="hidden md:flex items-center space-x-4"
       >
         <NavLinks />
       </nav>
 
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild className="md:hidden">
           <Button 
             className="text-black hover:bg-transparent"
@@ -46,8 +51,8 @@ export function Header() {
                 Veja nossos links
             </SheetDescription>
 
-            <nav>
-              <NavLinks />
+            <nav className="flex flex-col space-y-4 mt-6">
+              <NavLinks setIsOpen={() => setIsOpen(false)}/>
             </nav>
         </SheetContent>
       </Sheet>
