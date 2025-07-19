@@ -1,9 +1,14 @@
 import { Header } from "./_components/header";
+import { Hero } from "./_components/hero";
 
 export default function Home() { 
   return (
-    <main>
+    <div className="flex flex-col min-h-screen">
       <Header />
-    </main>
+      
+      <div>
+        <Hero />
+      </div>
+    </div>
   );
 }
