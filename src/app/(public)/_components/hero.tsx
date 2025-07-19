@@ -16,7 +16,7 @@ export function Hero() {
                 </p>
 
                 <Button 
-                    className="bg-emerald-500 hover:bg-emerald-400 w-fit px-6 font-semibold"
+                    className="bg-blue-500 hover:bg-blue-400 w-fit px-6 font-semibold"
                 >
                     Comece agora
                 </Button>

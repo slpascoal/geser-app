@@ -25,7 +25,7 @@ export function Header() {
             href="/"
             className="font-bold text-3xl text-zinc-900"
         >
-            Ge<span className="text-emerald-500">ser</span>
+            Ge<span className="text-blue-500">ser</span>
         </Link>
 
       <nav 

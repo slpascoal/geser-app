@@ -38,11 +38,11 @@ export function Professionals() {
                                         </p>
                                     </div>
 
-                                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
                                 </div>
                                 <Link
                                     href="/clinica/123"
-                                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-white flex
+                                    className="w-full bg-blue-500 hover:bg-blue-400 text-white flex
                                     items-center transition-colors justify-center py-2 rounded-md text-sm md:text-base font-medium"
                                 >
                                     Agendar horário
