@@ -1,10 +1,11 @@
 export default function Dashboard() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Dashboard</h1>
-      <p className="mt-4 text-lg">
-        This is the dashboard page using Next.js with Geist fonts.
-      </p>
-    </main>
+    <div>
+      <h1>Dashboard</h1>
+      
+      <div className="w-full h-[600px] bg-gray-200 mb-10"></div>
+      <div className="w-full h-[600px] bg-gray-500 mb-10"></div>
+      <div className="w-full h-[600px] bg-gray-300 mb-10"></div>
+    </div>
   );
 }
