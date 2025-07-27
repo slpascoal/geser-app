@@ -9,42 +9,42 @@ datasource db {
 }
 
 model Appointmets {
-  id String @id @default(uuid())
-  name String
-  email String
-  phone String
+  id              String   @id @default(uuid())
+  name            String
+  email           String
+  phone           String
   appointmentDate DateTime
-  time String
+  time            String
 
   serviceId String
-  service Service @relation(fields: [serviceId], references: [id])
-  userId String
-  user User @relation(fields: [userId], references: [id])
+  service   Service @relation(fields: [serviceId], references: [id])
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Reminder {
-  id String @id @default(uuid())
+  id          String @id @default(uuid())
   description String
-  
+
   userId String
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Service {
-  id       String @id @default(uuid())
+  id       String  @id @default(uuid())
   name     String
   price    Int
   duration Int
-  status Boolean @default(true)
+  status   Boolean @default(true)
 
-  userId String
-  user User @relation(fields: [userId], references: [id])
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
   appointments Appointmets[]
 
   createdAt DateTime @default(now())
@@ -58,39 +58,49 @@ enum Plan {
 }
 
 model Subscription {
-  id        String @id @default(uuid())
-  status    String
-  plan      Plan
-  priceId   String
+  id      String @id @default(uuid())
+  status  String
+  plan    Plan
+  priceId String
 
   userId String @unique
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  address            String? @default("")
-  phone              String? @default("")
-  status             Boolean @default(true)
+  id                 String    @id @default(cuid())
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  image              String?
+  address            String?   @default("")
+  phone              String?   @default("")
+  status             Boolean   @default(true)
   timezone           String?
   stripe_customer_id String?
 
   subscription Subscription?
-  services Service[]
-  reminders Reminder[]
+  services     Service[]
+  reminders    Reminder[]
   appointments Appointmets[]
+  times        UserTime[] // nova relação 1:N
 
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
   Authenticator Authenticator[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserTime {
+  id     String @id @default(uuid())
+  time   String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
